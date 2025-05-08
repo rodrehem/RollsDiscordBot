@@ -31,5 +31,3 @@ def roll_dice(roll_quantity: int, face_count: int, advantage: int) -> str:
        texto.append(f"\nTotal: {dices_sum}\nTotal com vantagem: {dices_sum + advantage}")
     
     return "".join(texto)
-
-print(roll_dice(2,6,0))
