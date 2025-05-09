@@ -1,7 +1,7 @@
 import random
 import re
 
-def roll_dice(roll_quantity: int, face_count: int, modifier: int) -> str:
+def roll_dice(roll_quantity: int, face_count: int, modifier: int):
 
     """
     Simula a rolagem de dados e retorna uma string com os resultados.
@@ -29,9 +29,9 @@ def roll_dice(roll_quantity: int, face_count: int, modifier: int) -> str:
     if modifier == 0:
         texto.append(f"\nTotal: {dices_sum}")
     else:
-       texto.append(f"\nTotal: {dices_sum}\nTotal com vantagem: {dices_sum + modifier}")
+       texto.append(f"\nTotal: {dices_sum}\nTotal com modificador: {dices_sum + modifier}")
     
-    return "".join(texto)
+    return "".join(texto), str(dices_sum + modifier)
 
 #------------------------------------------------------------------------------------------------------
 
@@ -72,5 +72,7 @@ def roll_requisition(str: str) -> str:
 
     resultado = roll_dice(roll_quantity, face_count, modifier)
 
-    return resultado
+    if len(resultado[0]) > 2000: return f'Resultados ultrapassam 2000 caracteres\nTotal: {resultado[1]}'
+    else: return resultado[0]
     
+print(roll_requisition('3d10+5'))
