@@ -1,7 +1,7 @@
 import os
 import discord
 from discord.ext import commands
-from rolls import roll_dice
+from rolls import roll_requisition
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -17,13 +17,13 @@ async def on_ready():
     print("Inicializado")
 
 @bot.tree.command()
-async def roll(interact: discord.Interaction, quantidade: int, lados: int, vantagem: int = 0):
-    resposta = roll_dice(quantidade, lados, vantagem)
+async def roll(interact: discord.Interaction, dados: str):
+    resposta = roll_requisition(dados)
     await interact.response.send_message(resposta)
 
 @bot.tree.command()
-async def secret_roll(interact: discord.Interaction, quantidade: int, lados: int, vantagem: int = 0):
-    resposta = roll_dice(quantidade, lados, vantagem)
+async def secret_roll(interact: discord.Interaction, dados: str):
+    resposta = roll_requisition(dados)
     await interact.response.send_message(resposta, ephemeral=True)
 
 bot.run(TOKEN_DS)
