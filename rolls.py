@@ -74,5 +74,3 @@ def roll_requisition(str: str) -> str:
 
     if len(resultado[0]) > 2000: return f'Resultados ultrapassam 2000 caracteres\nTotal: {resultado[1]}'
     else: return resultado[0]
-    
-print(roll_requisition('3d10+5'))
