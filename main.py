@@ -1,7 +1,7 @@
 import os
 import discord
 from discord.ext import commands
-from rolls import roll_requisition
+from rolls import roll_requisition, coin_flip
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -26,4 +26,15 @@ async def secret_roll(interact: discord.Interaction, dados: str):
     resposta = roll_requisition(dados)
     await interact.response.send_message(resposta, ephemeral=True)
 
+@bot.tree.command()
+async def coin(interact: discord.Interaction):
+    resposta = coin_flip()
+    await interact.response.send_message(resposta)
+
+@bot.tree.command()
+async def secret_coin(interact: discord.Interaction):
+    resposta = coin_flip()
+    await interact.response.send_message(resposta, ephemeral=True)
+
 bot.run(TOKEN_DS)
+

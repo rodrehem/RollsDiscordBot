@@ -74,3 +74,8 @@ def roll_requisition(str: str) -> str:
 
     if len(resultado[0]) > 2000: return f'Resultados ultrapassam 2000 caracteres\nTotal: {resultado[1]}'
     else: return resultado[0]
+
+#------------------------------------------------------------------------------------------------------
+def coin_flip() -> str:
+    if random.randint(1,2) == 1: return "Cara"
+    else: return "Coroa"
